@@ -61,12 +61,14 @@ item = {
         "reqs": {
         },
         "mods": {
-        }
+        },
+        
       },
+      "profs": []
     }
 
 
-toScrape = "https://auno.org/ao/db.php?id=151903"
+toScrape = "https://auno.org/ao/db.php?id=204750"
 page = requests.get(toScrape)
 item["auno"] = toScrape
 
@@ -170,6 +172,56 @@ if testmods:
 
   for index, req in enumerate(reqN):
       item["stats"]["mods"][req] = {"value": reqV[index], "quality": ""}
+
+# class stereotypes
+if item["type"] == "1h Blunt":
+  item["profs"].append("Enforcer")
+  item["profs"].append("Meta-Physicist")
+
+if item["type"] == "2h Blunt":
+  item["profs"].append("Enforcer")
+  item["profs"].append("Meta-Physicist")
+
+if item["type"] == "1h Edged":
+  item["profs"].append("Enforcer")
+  item["profs"].append("Adventurer")
+
+if item["type"] == "2h Edged":
+  item["profs"].append("Enforcer")
+  item["profs"].append("Keeper")
+
+if item["type"] == "2h Edged":
+  item["profs"].append("Enforcer")
+  item["profs"].append("Keeper")
+
+if item["type"] == "Pistol":
+  item["profs"].append("Adventurer")
+  item["profs"].append("Bureaucrat")
+  item["profs"].append("Doctor")
+  item["profs"].append("Engineer")
+  item["profs"].append("Meta-Physicist")
+  item["profs"].append("Nano-technician")
+
+if item["type"] == "Smg":
+  item["profs"].append("Fixer")
+  item["profs"].append("Soldier")
+
+if item["type"] == "Assault rifle":
+  item["profs"].append("Soldier")
+
+if item["type"] == "Rifle":
+  item["profs"].append("Agent")
+
+if item["type"] == "Martial arts":
+  item["profs"].append("Trader")
+  item["profs"].append("Martial Artist")
+
+if item["type"] == "Piercing":
+  item["profs"].append("Shade")
+
+if item["type"] == "Shotgun":
+  item["profs"].append("Trader")
+
 
 jsoneditem = json.dumps(item)
 f = open("dump.json", "w")
